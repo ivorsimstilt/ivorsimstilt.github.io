@@ -12,5 +12,26 @@
             <a-marker-camera preset="hiro"> <a-video vidhandler  position="0 0.2 0" src="#vid" rotation="90 180 0"></a-video> </a-marker-camera>
             <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+AFRAME.registerComponent('vidhandler', {
+  init: function () {
+    this.toggle = false;
+    this.vid = document.querySelector("#vid")
+    this.vid.pause()
+},
+tick:function(){
+   if(this.el.object3D.visible == true){
+     if(!this.toggle){
+       this.toggle = true;
+       this.vid.play();
+    }
+  }else{
+    this.toggle = false;
+    this.vid.pause();
+  }
+ }
+});
+      </script>
   </body>
 </html>
