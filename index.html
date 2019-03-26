@@ -3,35 +3,79 @@
 <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
   <body style="margin : 0px; overflow: hidden;">
-        <a-scene embedded arjs="sourceType: webcam;">
-            <a-assets>
-                <video  type="video/mp4" id="vid"    loop="false" src="https://ucarecdn.com/bb90f1f8-134e-4eb2-9688-38721ee7e9ad/" webkit-playsinline >
-                </video>
-             </a-assets>
-          	<!-- <a-box position='0 0.5 0' material='color: black;'></a-box> -->
-            <a-marker-camera preset="hiro"> <a-video vidhandler  position="0 0.2 0" src="#vid" rotation="90 180 0"></a-video> </a-marker-camera>
-            <a-entity camera></a-entity>
-    </a-scene>
+      <script>
 
-    <script>
-AFRAME.registerComponent('vidhandler', {
-  init: function () {
-    this.toggle = false;
-    this.vid = document.querySelector("#vid")
-    this.vid.pause()
-},
-tick:function(){
-   if(this.el.object3D.visible == true){
-     if(!this.toggle){
-       this.toggle = true;
-       this.vid.play();
-    }
-  }else{
-    this.toggle = false;
-    this.vid.pause();
-  }
- }
-});
-      </script>
+          var scene
+          var AR-Object01
+          var AR-Object02
+          var AR-VideoScreen
+          
+          AFRAME.registerComponent('markerhandler', {
+          
+            init: function() {
+          
+              // Set up the tick throttling. Will check if marker is active every 500ms
+              this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
+            },
+          
+            tick: function(t, dt) {
+          
+              if (document.querySelector("#hiroMarker").object3D.visible == true && playing == false) {
+                // MARKER IS PRESENT
+                //alert("MARKER IS PRESENT")
+          
+                scene = document.querySelector('#a-scene');
+                AR-Object01 = document.querySelector('#Object01');
+                AR-Object02 = document.querySelector('#Object02');
+                AR-VideoScreen =  document.querySelector('#videoScreen');
+          
+                AR-Object01.addEventListener('click', function () { console.log("object01 clickable in AR") });
+                AR-Object02.addEventListener('click', function () { console.log("object02 clickable in AR") });
+                videoScreen.addEventListener('click', function () { playPauseVideo(); console.log("Video Play Toggle") });
+                playing = true;
+          
+              }
+          
+              }else {
+                // MARKER IS HIDDEN, do nothing (up to you)
+              }
+          
+          });
+          
+          function playPauseVideo(){
+          
+          if (video.paused)
+              video.play();
+            else
+              video.pause();
+          }
+          
+          
+          </script>
+          
+          <a-scene id="a-scene" cursor="rayOrigin: mouse" embedded arjs="sourceType:webcam; maxDetectionRate:30; debugUiEnabled:false;">
+          
+                <a-assets>
+          
+                <video id="video" loop="true" src="https://ucarecdn.com/bb90f1f8-134e-4eb2-9688-38721ee7e9ad/" webkit-playsinline>
+          
+             </a-assets>
+          
+             <a-marker preset='hiro' markerhandler emitevents="true" id="hiroMarker">
+          
+          
+              <a-entity id="AR-Object01" (info about this object)></a-entity>
+              <a-entity id="AR-Object02" (info about this object)></a-entity>
+          
+              <a-video id="videoScreen" src="#video" width="16" height="9" autoplay=true></a-video>
+          
+          
+             </a-marker>
+          
+          <a-entity camera></a-entity>
+          
+            </a-scene>
   </body>
 </html>
+
+
