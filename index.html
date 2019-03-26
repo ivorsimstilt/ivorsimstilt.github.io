@@ -29,8 +29,8 @@
                 AR-Object02 = document.querySelector('#Object02');
                 AR-VideoScreen =  document.querySelector('#videoScreen');
           
-                AR-Object01.addEventListener('click', function () { console.log("object01 clickable in AR") });
-                AR-Object02.addEventListener('click', function () { console.log("object02 clickable in AR") });
+                // AR-Object01.addEventListener('click', function () { console.log("object01 clickable in AR") });
+                // AR-Object02.addEventListener('click', function () { console.log("object02 clickable in AR") });
                 videoScreen.addEventListener('click', function () { playPauseVideo(); console.log("Video Play Toggle") });
                 playing = true;
           
@@ -61,11 +61,11 @@
           
              </a-assets>
           
-             <a-marker preset='hiro' markerhandler emitevents="true" id="hiroMarker">
+             <a-marker preset='hiro' markerhandler emitevents="true" id="hiroMarker" cursor="rayOrigin: mouse">
           
           
-              <a-entity id="AR-Object01" (info about this object)></a-entity>
-              <a-entity id="AR-Object02" (info about this object)></a-entity>
+              <!-- <a-entity id="AR-Object01" (info about this object)></a-entity>
+              <a-entity id="AR-Object02" (info about this object)></a-entity> -->
           
               <a-video id="videoScreen" src="#video" width="4" height="2.25" autoplay=true></a-video>
           
