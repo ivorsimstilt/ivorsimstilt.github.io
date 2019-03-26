@@ -4,17 +4,12 @@
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
   <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs='sourceType: webcam;'>
-        <a-assets>
-                <a-asset-item id="box-obj" src="model/BoxOBJ.obj"></a-asset-item>
-                <a-asset-item id="box-mtl" src="model/BoxOBJ.mtl"></a-asset-item>
-        </a-assets>
-  	<!-- <a-marker preset="hiro"> -->
+          	<a-marker preset="hiro">
             <!-- <a-box position='0 0.5 0' material='color: black;'></a-box> -->
-           <!-- Using the asset management system. -->
-<!-- Using the asset management system. -->
-<a-entity obj-model="obj: #box-obj; mtl: #box-mtl"></a-entity>
-<a-marker preset="hiro"></a-marker>
-</a-scene>
+            <!-- <a-entity obj-model=”obj: url(/model/BoxOBJ.obj); mtl: url(/model/BoxOBJ.mtl)”> -->
+            </a-entity>
+  	</a-marker>
+  	<a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
