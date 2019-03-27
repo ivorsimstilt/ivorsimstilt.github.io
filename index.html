@@ -16,8 +16,9 @@
                 this.toggle = false;
                 this.vid = document.querySelector("#vid");
                 this.vid.pause();
-              
-                vid.addEventListener('click', () => {
+                
+                var playthisvid_1 = document.querySelector('#playbutton_1');
+                playthisvid_1.addEventListener('click', () => {
                 vid.play();
                 console.log("it clicks_1");
 
@@ -48,7 +49,8 @@
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded artoolkit='sourceType: webcam; detectionMode: mono; maxDetectionRate: 60; canvasWidth: 200; canvasHeight: 200'>
+    <img src="https://cdn3.iconfinder.com/data/icons/seo-marketing-2-1/48/56-512.png" id="playbutton_1" class="clickable" position="-5 0 0" width="2" height="2" rotation="0 -90 0" foo>
+    <a-scene embedded artoolkit='sourceType: webcam; detectionMode: mono; maxDetectionRate: 60; canvasWidth: 200; canvasHeight: 200' cursor="rayOrigin: mouse>
         <a-assets>
             <video preload="auto" id="vid" poster="ANY IMAGE PATH (THUMBNAIL)" response-type="arraybuffer" loop="false" crossorigin webkit-playsinline playsinline controls muted>
                 <source type="video/mp4"  src="https://ivorsimstilt.github.io/paul_sound5.mp4">
