@@ -16,6 +16,11 @@
                 this.toggle = false;
                 this.vid = document.querySelector("#vid");
                 this.vid.pause();
+              
+                vid.addEventListener('click', () => {
+                vid.play();
+                console.log("it clicks_1");
+
             },
             tick: function() {
                 if (this.el.object3D.visible == true) {
